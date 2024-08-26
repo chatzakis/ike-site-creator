@@ -1,0 +1,38 @@
+section {
+    padding: 50px 25%;
+}
+
+form .required:after {
+    content:"*";
+    color:red;
+  }
+
+img{
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
+}
+
+a{
+    text-decoration: none;
+}
+
+.navbar .container-fluid {
+    padding: 0 25%;
+}
+
+.intro-img{
+    margin: 0 10%;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 40px 5px;
+    }
+    .navbar .container-fluid {
+        padding: 4px 5px;
+    }
+    .navbar-brand{
+        font-size: 1.1rem;
+    }
+}

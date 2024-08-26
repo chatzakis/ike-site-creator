@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Υπερκατασκευαστική</title>
+    <!-- Head -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--   Social meta tags -->
+    <meta property="og:locale" content="el_GR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Υπερκατασκευαστική Website">
+    <meta property="og:description" content="Υπερκατασκευαστική Website">
+    <meta property="og:site_name" content="Υπερκατασκευαστική Website">
+
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/c2d17406e6.js" crossorigin="anonymous"></script>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <style>
+        section {
+            padding: 30px 25%;
+        }
+
+        .main-page-wrapper .navbar {
+            background-color: #1a53ff !important;
+        }
+
+        .navbar .container-fluid {
+            padding: 0 25%;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .main-page-wrapper {
+            min-height: 97vh;
+            background: #eee;
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+        }
+
+        hr {
+            margin: 10px 25%
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 5px;
+            }
+
+            .navbar .container-fluid {
+                padding: 4px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-page-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Υπερκατασκευαστική</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>
+                                Αρχική</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#etairia"><i class="fa-solid fa-building"></i> Στοιχεία
+                                εταιρίας</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#etairoi"><i class="fa-solid fa-users"></i> Στοιχεία εταίρων</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="title">
+            <div class="heading text-center my-3">
+                <h1>Υπερκατασκευαστική</h1>
+            </div>
+        </section>
+
+        <!-- Στοιχεία εταιρίας -->
+        <section id="etairia">
+            <h2 class="heading  text-center my-3"><i class="fa-solid fa-building"></i> Στοιχεία εταιρίας</h2>
+            <div class="row align-items-start">
+                <div class="col-lg-6">
+                    <ul>
+                        <li><strong>ΕΠΩΝΥΜΙΑ:</strong> Υπερκατασκευαστική ΙΚΕ</li>
+                        <li><strong>ΔΙΑΚΡΙΤΙΚΟΣ ΤΙΤΛΟΣ:</strong> Υπερκατασκευαστική</li>
+                        <li><strong>ΑΦΜ:</strong> 123456789</li>
+                        <li><strong>ΔΟΥ:</strong> Α' Θεσσαλονίκης</li>
+                        <li><strong>ΑΡ. ΓΕΜΗ:</strong> 12345678912</li>
+                        <li><strong>ΗΜΕΡΟΜΗΝΙΑ ΛΗΞΗΣ 1Ης ΧΡΗΣΗΣ:</strong> 2024-08-26</li>
+                        <li><strong>ΚΕΦΑΛΑΙΟ:</strong> 10.000€</li>
+                        <li><strong>ΔΙΑΧΕΙΡΙΣΤΗΣ:</strong> Νίκος Παπαδόπουλος</li>
+                        <li><strong>ΑΦΜ ΔΙΑΧΕΙΡΙΣΤΗ:</strong> 987654321</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul>
+                        <li><strong>ΔΙΕΥΘΥΝΣΗ:</strong> Νικηφόρου Φωκά 1,</li>
+                        <li><strong>Τ.Κ.</strong> 54621</li>
+                        <li><strong>ΠΕΡΙΟΧΗ:</strong> Θεσσαλονίκη</li>
+                        <li><strong>ΤΗΛ:</strong> 2310999999</li>
+                        <li><strong>FAX:</strong> 2310888888</li>
+                        <li><strong>EMAIL:</strong> yperkataskevastiki@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!-- Στοιχεία εταίρων -->
+        <section id="etairoi">
+            <h2 class="heading  text-center my-3"><i class="fa-solid fa-users"></i> Στοιχεία εταίρων</h2>
+            <div class="row display-etairoi align-items-start">
+                <div class="col-lg-6 my-2 etairos">
+                    <ul>
+                        <li><strong>ΟΝΟΜΑ:</strong> Δημήτρης Δημόπουλος</li>
+                        <li><strong>ΔΙΕΥΘΥΝΣΗ:</strong> Νικηφόρου Φωκά 2,</li>
+                        <li><strong>Τ.Κ.::</strong> 54621</li>
+                        <li><strong>ΠΕΡΙΟΧΗ:</strong> Θεσσαλονίκη</li>
+                        <li><strong>ΠΟΣΟΣΤΟ ΣΥΜΜΕΤΟΧΗΣ:</strong> 50%</li>
+                        <li><strong>ΚΑΤΗΓΟΡΙΑ ΕΙΣΦΟΡΩΝ</strong> 1. Κεφαλαιακές</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 my-2 etairos">
+                    <ul>
+                        <li><strong>ΟΝΟΜΑ:</strong> Γιάννης Καραγιάννης</li>
+                        <li><strong>ΔΙΕΥΘΥΝΣΗ:</strong> Νικηφόρου Φωκά 3,</li>
+                        <li><strong>Τ.Κ.::</strong> 54621</li>
+                        <li><strong>ΠΕΡΙΟΧΗ:</strong> Θεσσαλονίκη</li>
+                        <li><strong>ΠΟΣΟΣΤΟ ΣΥΜΜΕΤΟΧΗΣ:</strong> 50%</li>
+                        <li><strong>ΚΑΤΗΓΟΡΙΑ ΕΙΣΦΟΡΩΝ</strong> 1. Κεφαλαιακές</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="footer text-center bg-dark text-light py-1">Powered by <a href="https://www.chatzakisdev.gr/"
+            target="_blank">chatzakisdev</a></footer>
+</body>
+
+
+</html>
