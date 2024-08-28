@@ -103,7 +103,7 @@
 
   <section id="input-form">
     <h2 class="my-3"><i class="fa-regular fa-pen-to-square"></i> Φόρμα δημιουργίας ιστοσελίδας ΙΚΕ</h2>
-    <form id="stoixeia" class="row px-0" onsubmit="handleSubmit(event)">
+    <form id="stoixeia" class="row px-0 needs-validation" onsubmit="handleSubmit(event)">
       <h3 class="my-2">Στοιχεία εταιρίας</h3>
       <div class="col-12 mb-3">
         <label for="company-name" class="form-label required">Επωνυμία εταιρίας</label>
@@ -112,23 +112,23 @@
       </div>
       <div class="col-md-6 mb-3">
         <label for="afm" class="form-label required">ΑΦΜ</label>
-        <input type="number" class="form-control" name="afm" id="afm" min="0" required>
+        <input type="number" class="form-control" name="afm" placeholder="Τα 9-ψηφία του ΑΦΜ της επιχείρησης" id="afm" step="1" min="0" pattern="\d{9}" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="doy" class="form-label required">ΔΟΥ</label>
-        <input type="text" class="form-control" name="doy" id="doy">
+        <input type="text" class="form-control" name="doy" id="doy" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="gemi" class="form-label required">Αριθμός ΓΕΜΗ</label>
-        <input type="number" class="form-control" name="gemi" id="gemi" min="0" required>
+        <input type="number" class="form-control" name="gemi" placeholder="Τα 12-ψηφία του Αριθμού ΓΕΜΗ" step="1" id="gemi" min="0" required>
       </div>
       <div class="col-md-6 mb-3">
         <label for="proti-xrisi" class="form-label required">Ημερομηνία λήξης 1ης χρήσης</label>
         <input type="date" class="form-control" name="proti-xrisi" id="proti-xrisi" required>
       </div>
       <div class="col-12 mb-5">
-        <label for="kefalaio" class="form-label required">Κεφάλαιο</label>
-        <input type="text" class="form-control" name="kefalaio" id="kefalaio" required>
+        <label for="kefalaio" class="form-label required">Κεφάλαιο (€)</label>
+        <input type="number" class="form-control" name="kefalaio" id="kefalaio" min="0" required>
       </div>
       <div class="col-md-7 mb-3">
         <label for="diaxeiristis" class="form-label required">Διαχειριστής</label>
@@ -136,7 +136,7 @@
       </div>
       <div class="col-md-5 mb-3">
         <label for="afm-diax" class="form-label required">ΑΦΜ διαχειριστή</label>
-        <input type="number" class="form-control" name="afm-diax" id="afm-diax" min="0" required>
+        <input type="number" class="form-control" name="afm-diax" placeholder="Τα 9-ψηφία του ΑΦΜ του διαχειριστή" step="1" id="afm-diax" min="0" required>
       </div>
       <h4 class="col-12 my-2">Στοιχεία επικοινωνίας</h4>
       <div class="mb-3">
@@ -144,8 +144,8 @@
         <input type="text" class="form-control" name="address" id="address" required>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="post" class="form-label required">Τ.Κ.</label>
-        <input type="number" class="form-control" name="post" id="post" min="0" required>
+        <label for="post" class="form-label required">Ταχυδρομικός Κώδικας</label>
+        <input type="number" class="form-control" name="post" placeholder="Τα 5-ψηφία του Τ.Κ." step="1" id="post" min="0" required>
       </div>
       <div class="col-md-6 mb-5">
         <label for="area" class="form-label required">Περιοχή</label>
@@ -153,11 +153,11 @@
       </div>
       <div class="col-md-6 mb-3">
         <label for="tel" class="form-label required">Τηλέφωνο</label>
-        <input type="tel" class="form-control" name="tel" id="tel" required>
+        <input type="tel" class="form-control" name="tel" step="1" id="tel" required>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="fax" class="form-label required">Fax</label>
-        <input type="tel" class="form-control" name="fax" id="fax" required>
+        <label for="fax" class="form-label">Fax</label>
+        <input type="tel" class="form-control" name="fax" step="1" id="fax" >
       </div>
       <div class="col-12 mb-3">
         <label for="email" class="form-label required">Email</label>
@@ -167,7 +167,7 @@
         <h3>Στοιχεία εταίρων</h3>
       </div>
       <div class="col-12 mb-3">
-        <label for="etairoi" class="form-label required">Αριθμός εταίρων (επιλέξτε πριν συμπληρώσετε)</label>
+        <label for="etairoi" class="form-label required">Αριθμός εταίρων (επιλέξτε πριν συμπληρώσετε τα στοιχεία)</label>
         <input type="number" class="form-control" name="etairoi" id="etairoi" min="1" max="10" required>
       </div>
       <div id="etairoi-form" class="row pe-0"></div>
@@ -181,9 +181,8 @@
       <div class="col-12 mb-3">
         <button type="submit" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Δημιουργία</button>
       </div>
-
+      <em id="errorMsg" class="fs-5 text-danger"></em>
     </form>
-    <h1 class="result"></h1>
   </section>
   <footer class="footer text-center bg-dark text-light py-1">Powered by <a href="https://www.chatzakisdev.gr/"
       target="_blank">chatzakisdev</a></footer>

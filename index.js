@@ -27,22 +27,20 @@ loadHtmlFile()
 // Handle file creation from form fields
 function handleSubmit(event){
     event.preventDefault();
-    // Company Info
-    let companyName = event.target['company-name'].value;
-    let afm = event.target['afm'].value;
-    let doy = event.target['doy'].value;
-    let gemi = event.target['gemi'].value;
-    let protiXrisi = event.target['proti-xrisi'].value;
-    let kefalaio = event.target['kefalaio'].value;
-    let diaxeiristis = event.target['diaxeiristis'].value;
-    let afmDiax = event.target['afm-diax'].value;
-    // Contact info
-    let address = event.target['address'].value;
-    let post = event.target['post'].value;
-    let area = event.target['area'].value;
-    let tel = event.target['tel'].value;
-    let fax = event.target['fax'].value;
-    let email = event.target['email'].value;
+
+    const data = retrieveFormData(event);
+    console.log(data);
+    
+    if(alertDataError(data)){
+        return
+    }
+
+    addDataToTemplate(data);
+
+    save('index.html', templateHTML, 'html');
+}
+
+function retrieveFormData(event){
     // Etairoi
     let etairoiCount = Number(event.target['etairoi'].value);
     let etairoi = [];
@@ -56,29 +54,81 @@ function handleSubmit(event){
             eisfores: event.target[`et${i+1}-eisfores`].value
         });
     }
-    // Color
-    let color = event.target['color'].value;
 
+    const data = {
+        companyName : event.target['company-name'].value,
+        afm : event.target['afm'].value,
+        doy : event.target['doy'].value,
+        gemi : event.target['gemi'].value,
+        protiXrisi : event.target['proti-xrisi'].value,
+        kefalaio : event.target['kefalaio'].value,
+        diaxeiristis : event.target['diaxeiristis'].value,
+        afmDiax : event.target['afm-diax'].value,
+        // Contact info
+        address : event.target['address'].value,
+        post : event.target['post'].value,
+        area : event.target['area'].value,
+        tel : event.target['tel'].value,
+        fax : event.target['fax'].value,
+        email : event.target['email'].value,
+        // Etairoi
+        etairoi: etairoi,
+        // Color
+        color: event.target['color'].value
+    }
+
+    return data;
+}
+
+function alertDataError(data){
+    let errorExists = false;
+    const errorMsg = document.getElementById('errorMsg');
+    errorMsg.innerHTML = "";
+
+    if (! /^\d{9}$/.test(data.afm)){
+        errorMsg.innerHTML += 'Το ΑΦΜ πρέπει να έχει 9 ψηφία.<br>';
+        errorExists = true;
+    }
+    if (! /^\d{9}$/.test(data.afmDiax)){
+        errorMsg.innerHTML += 'Το ΑΦΜ διαχειριστή πρέπει να έχει 9 ψηφία.<br>';
+        errorExists = true;
+    }
+    if (! /^\d{12}$/.test(data.gemi)){
+        errorMsg.innerHTML += 'Ο αριθμός ΓΕΜΗ πρέπει να έχει 12 ψηφία.<br>';
+        errorExists = true;
+    }
+    if (! /^\d{10,14}$/.test(data.tel)){
+        errorMsg.innerHTML += 'Ο αριθμός τηλεφώνου πρέπει να έχει 10 ψηφία ή 14 με το πρόθεμα (0030).<br>';
+        errorExists = true;
+    }
+    if (! /^\d{5}$/.test(data.post)){
+        errorMsg.innerHTML += 'O ταχυδρομικός κώδικας πρέπει να έχει 5 ψηφία.<br>';
+        errorExists = true;
+    }
+    return errorExists
+}
+
+function addDataToTemplate(data){
     // Company Info
-    templateHTML = templateHTML.replaceAll("$company-name", companyName)
-    .replaceAll("$afm", afm)
-    .replaceAll("$doy", doy)
-    .replaceAll("$gemi", gemi)
-    .replaceAll("$proti-xrisi", protiXrisi)
-    .replaceAll("$kefalaio", kefalaio)
-    .replaceAll("$diaxeiristis", diaxeiristis)
-    .replaceAll("$diax-afm", afmDiax)
+    templateHTML = templateHTML.replaceAll("$company-name", data.companyName)
+    .replaceAll("$afm", data.afm)
+    .replaceAll("$doy", data.doy)
+    .replaceAll("$gemi", data.gemi)
+    .replaceAll("$proti-xrisi", data.protiXrisi)
+    .replaceAll("$kefalaio", data.kefalaio)
+    .replaceAll("$diaxeiristis", data.diaxeiristis)
+    .replaceAll("$diax-afm", data.afmDiax)
     // Contact info
-    .replaceAll("$address", address)
-    .replaceAll("$post", post)
-    .replaceAll("$area", area)
-    .replaceAll("$tel", tel)
-    .replaceAll("$fax", fax)
-    .replaceAll("$email", email)
-    .replaceAll("royalblue", color);
+    .replaceAll("$address", data.address)
+    .replaceAll("$post", data.post)
+    .replaceAll("$area", data.area)
+    .replaceAll("$tel", data.tel)
+    .replaceAll("$fax", data.fax)
+    .replaceAll("$email", data.email)
+    .replaceAll("royalblue", data.color);
 
     let etairoiFields = "";
-    etairoi.forEach((etairos) => {
+    data.etairoi.forEach((etairos) => {
         etairoiFields += etairosField.replaceAll("$et-name", etairos.name)
         .replaceAll("$et-address", etairos.address)
         .replaceAll("$et-post", etairos.post)
@@ -88,8 +138,6 @@ function handleSubmit(event){
     }); 
 
     templateHTML = templateHTML.replace("$etairoi", etairoiFields)
-
-    save('index.html', templateHTML, 'html');
 }
 
 function save(filename, data, fileType) {
@@ -109,7 +157,6 @@ function save(filename, data, fileType) {
 
 // Handle dynamic form fields for "etairoi"
 const etairoiSelector = document.querySelector("#etairoi");
-const result = document.querySelector(".result");
 
 etairoiSelector.addEventListener("change", (event) => {
     const formContainer = document.querySelector("#etairoi-form");
